@@ -55,6 +55,15 @@ func rotate(_ nums: inout [Int], _ k: Int) {
 func containsDuplicate(_ nums: [Int]) -> Bool {
     return nums.count != Set(nums).count
 }
-
+//:
+//: ---
+//: ### [只出现一次的数字](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/25/)
+func singleNumber(_ nums: [Int]) -> Int {
+    var res = 0
+    for item in nums {
+        res = res ^ item
+    }
+    return res
+}
 
 //: [Next](@next)
