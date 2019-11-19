@@ -49,6 +49,12 @@ func rotate(_ nums: inout [Int], _ k: Int) {
      nums = Array(tail + head)
      */
 }
+//:
+//: ---
+//: ### [存在重复](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/24/)
+func containsDuplicate(_ nums: [Int]) -> Bool {
+    return nums.count != Set(nums).count
+}
 
 
 //: [Next](@next)
