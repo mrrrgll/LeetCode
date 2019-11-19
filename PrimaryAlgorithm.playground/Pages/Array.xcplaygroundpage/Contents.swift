@@ -31,6 +31,24 @@ func maxProfit(_ prices: [Int]) -> Int {
 }
 //:
 //: ---
-//: ### []()
+//: ### [旋转数组](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/23/)
+func rotate(_ nums: inout [Int], _ k: Int) {
+    if k < 1 || nums.count < 2 || nums.count == k {
+        return
+    }
+    // 空间复杂度O(1),时间复杂度O(n)
+    let s = k % nums.count
+    nums.reverse()
+    nums[0..<s].reverse()
+    nums[s...].reverse()
+    
+    /* 空间复杂度O(n),时间复杂度O(1)
+     let s = nums.count - (k % nums.count)
+     let head = nums[..<s]
+     let tail = nums[s...]
+     nums = Array(tail + head)
+     */
+}
+
 
 //: [Next](@next)
