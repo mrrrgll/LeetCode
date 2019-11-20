@@ -129,5 +129,39 @@ func plusOne(_ digits: [Int]) -> [Int] {
      return res.reversed()
      */
 }
-
+//:
+//: ---
+//: ### [移动零](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/28/)
+func moveZeroes(_ nums: inout [Int]) {
+    var i = 0
+    var j = 1
+    while j < nums.count {
+        let iIs0 = nums[i] == 0
+        let jIs0 = nums[j] == 0
+        switch (iIs0, jIs0) {
+        case (true, true):
+            j += 1
+        case (true, false):
+            (nums[i], nums[j]) = (nums[j], nums[i])
+        case (false, true):
+            i += 1
+        case (false, false):
+            i += 1
+            j += 1
+        }
+    }
+    /* 优化
+     var i = 0
+     for j in 1..<nums.count {
+         if nums[i] != 0 {
+             i += 1
+             continue
+         }
+         if nums[j] != 0 {
+             (nums[i], nums[j]) = (nums[j], nums[i])
+             i += 1
+         }
+     }
+     */
+}
 //: [Next](@next)
