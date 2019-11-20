@@ -67,7 +67,7 @@ func singleNumber(_ nums: [Int]) -> Int {
 }
 //:
 //: ---
-//: ###[两个数组的交集 II](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/26/)
+//: ### [两个数组的交集 II](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/26/)
 func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
     var frequency = Dictionary(nums1.map{ ($0, 1) }, uniquingKeysWith: +)
     var results = [Int]()
@@ -78,28 +78,56 @@ func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
         }
     }
     return results
-    /* 先排序,再找
-    var res = [Int]()
-    let n1 = nums1.sorted()
-    let n2 = nums2.sorted()
-    var i = 0
-    var j = 0
-    while i < n1.count && j < n2.count {
-        if n1[i] == n2[j] {
-            res.append(n1[i])
-            i += 1
-            j += 1
-        } else if n1[i] < n2[j] {
-            i += 1
-        } else {
-            j += 1
-        }
-    }
-    return res
+    /* 先排序,再求解
+     var res = [Int]()
+     let n1 = nums1.sorted()
+     let n2 = nums2.sorted()
+     var i = 0
+     var j = 0
+     while i < n1.count && j < n2.count {
+         if n1[i] == n2[j] {
+             res.append(n1[i])
+             i += 1
+             j += 1
+         } else if n1[i] < n2[j] {
+             i += 1
+         } else {
+             j += 1
+         }
+     }
+     return res
      */
 }
-
-let nums1 = [4,9,5], nums2 = [9,4,9,8,4]
-intersect(nums1, nums2)
+//:
+//: ---
+//: ### [加一](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/27/)
+func plusOne(_ digits: [Int]) -> [Int] {
+    var res = digits
+    for i in 0..<res.count {
+        let j = res.count - i - 1
+        res[j] += 1
+        res[j] %= 10
+        if res[j] != 0 {
+            return res
+        }
+    }
+    res = [Int](repeating: 0, count: res.count + 1)
+    res[0] = 1
+    return res
+    /* 错误解法(会溢出)
+     var num = 0
+     for value in digits {
+         num = num * 10 + value
+     }
+     num += 1
+     var res = [Int]()
+     while num > 0 {
+         let i = num % 10
+         num = num / 10
+         res.append(i)
+     }
+     return res.reversed()
+     */
+}
 
 //: [Next](@next)
