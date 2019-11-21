@@ -164,4 +164,19 @@ func moveZeroes(_ nums: inout [Int]) {
      }
      */
 }
+//:
+//: ---
+//: ### [两数之和](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/29/)
+func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+    var map = [Int: Int]()
+    for i in 0..<nums.count {
+        let complete = target - nums[i]
+        if let j = map[complete] {
+            return [i, j]
+        }
+        map[nums[i]] = i
+    }
+    return []
+}
+
 //: [Next](@next)
