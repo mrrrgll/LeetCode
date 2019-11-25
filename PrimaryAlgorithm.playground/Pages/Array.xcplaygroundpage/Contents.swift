@@ -178,5 +178,32 @@ func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
     }
     return []
 }
+//:
+//: ---
+//: ### [有效的数独](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/30/)
+func isValidSudoku(_ board: [[Character]]) -> Bool {
+    for i in 0..<9 {
+        var line = Set<Character>()
+        var column = Set<Character>()
+        var cube = Set<Character>()
+        for j in 0..<9 {
+            if board[i][j] != ".", !line.insert(board[i][j]).inserted {
+                return false
+            }
+            if board[j][i] != ".", !column.insert(board[j][i]).inserted {
+                return false
+            }
+            let m = i/3*3 + j/3
+            let n = i%3*3 + j%3
+            if board[m][n] != ".", !cube.insert(board[m][n]).inserted {
+                return false
+            }
+        }
+    }
+    return true
+}
+//:
+//: ---
+//: ### [旋转图像](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/31/)
 
 //: [Next](@next)
