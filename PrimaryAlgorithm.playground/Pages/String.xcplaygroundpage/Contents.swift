@@ -87,5 +87,76 @@ func isAnagram(_ s: String, _ t: String) -> Bool {
      return counter == Array(repeating: 0, count: 26)
      */
 }
+//:
+//: ---
+//: ### [验证回文字符串](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/36/)
+func isPalindrome(_ s: String) -> Bool {
+    var arr = [UInt32]()
+    for i in s.unicodeScalars {
+        if i.value > 47, i.value < 58 {// 0...9
+            arr.append(i.value)
+            continue
+        }
+        if i.value > 64, i.value < 91 {// A...Z
+            arr.append(i.value + 32)
+            continue
+        }
+        if i.value > 96, i.value < 123 {// a...z
+            arr.append(i.value)
+        }
+    }
+    var i = 0, j = arr.count - 1
+    while i < j {
+        if arr[i] == arr[j] {
+            i += 1
+            j -= 1
+            continue
+        }
+        return false
+    }
+    return true
+    /* 不使用额外空间的解法,使用String.Index
+     guard s.count > 0 else { return true }
+     func isNumOrLetter(_ c: Character) -> Bool {
+         if c >= "A", c <= "Z" {
+             return true
+         }
+         if c >= "a", c <= "z" {
+             return true
+         }
+         if c >= "0", c <= "9" {
+             return true
+         }
+         return false
+     }
+     
+     var i = s.startIndex
+     var j = s.index(before: s.endIndex)
+     while i < j {
+         if !isNumOrLetter(s[i]) {
+             i = s.index(after: i)
+             continue
+         }
+         if !isNumOrLetter(s[j]) {
+             j = s.index(before: j)
+             continue
+         }
+         
+         if s[i].lowercased() != s[j].lowercased() {
+             return false
+         }
+         i = s.index(after: i)
+         j = s.index(before: j)
+     }
+     return true
+     */
+}
+
+
+let startTime = CFAbsoluteTimeGetCurrent()
+// 测试代码写这里:
+
+let endTime = CFAbsoluteTimeGetCurrent()
+print("代码执行时长：\((endTime - startTime)*1000) 毫秒")
 
 //: [Next](@next)
