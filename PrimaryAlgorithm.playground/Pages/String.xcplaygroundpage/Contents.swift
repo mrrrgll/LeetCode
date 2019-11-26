@@ -24,11 +24,24 @@ func reverse(_ x: Int) -> Int {
         arr.append("\(i)")
         y /= 10
     }
-    print(arr)
     if let res = Int32(arr.joined()) {
-        var r = Int(res)
+        let r = Int(res)
         return x < 0 ? -r : r
     }
     return 0
+    /* 优化
+     var num = x
+     var result = 0
+     while num != 0 {
+     let temp = num % 10
+     result = temp + result * 10
+     num /= 10
+     }
+     if result >= Int32.min, result <= Int32.max {
+     return result
+     }
+     return 0
+     */
 }
+
 //: [Next](@next)
