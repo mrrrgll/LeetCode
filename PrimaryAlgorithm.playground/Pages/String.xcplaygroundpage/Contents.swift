@@ -151,8 +151,48 @@ func isPalindrome(_ s: String) -> Bool {
      return true
      */
 }
-
-
+//:
+//: ---
+//: ### [字符串转换整数 (atoi)](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/37/)
+func myAtoi(_ str: String) -> Int {
+    guard str.count > 0 else { return 0 }
+    var temp = ""
+    var sign = ""
+    for c in str {
+        if c == " " {
+            if temp.count > 0 {
+                break // 跳过尾部空格
+            }
+            if sign.count > 0 {
+                break // 跳过符号尾部空格
+            }
+            continue // 跳过首部空格
+        }
+        if c == "-" || c == "+" {
+            if temp.count > 0 || sign.count > 0 {
+                break // 出现了多余的正负号
+            }
+            sign = String(c)
+            continue // 确定了正负号
+        }
+        if c >= "0" && c <= "9" {
+            temp += String(c)
+        } else {
+            if temp.count == 0 {
+                return 0 // 首个字符非数字
+            }
+            if temp.count > 0 {
+                break // 数字尾部出现了非数字
+            }
+        }
+    }
+    guard temp.count > 0 else { return 0 }
+    if let int32 = Int32(temp) {
+        return sign == "-" ? Int(-int32) : Int(int32)
+    } else {
+        return sign == "-" ? Int(Int32.min) : Int(Int32.max)
+    }
+}
 let startTime = CFAbsoluteTimeGetCurrent()
 // 测试代码写这里:
 
