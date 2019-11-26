@@ -68,4 +68,24 @@ func firstUniqChar(_ s: String) -> Int {
      return -1
      */
 }
+//:
+//: ---
+//: ### [有效的字母异位词](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/35/)
+func isAnagram(_ s: String, _ t: String) -> Bool {
+    let dictS = Dictionary(s.unicodeScalars.map{ ($0.value, 1) }, uniquingKeysWith: +)
+    let dictT = Dictionary(t.unicodeScalars.map{ ($0.value, 1) }, uniquingKeysWith: +)
+    return dictS == dictT
+    /* 另一种解法(速度快,占用空间小,但包含unicode字符无法处理)
+     let offset = Int("a".unicodeScalars.first?.value ?? 0)
+     var counter: [Int] = Array(repeating: 0, count: 26)
+     for c in s.unicodeScalars {
+         counter[Int(c.value) - offset] += 1
+     }
+     for c in t.unicodeScalars {
+         counter[Int(c.value) - offset] -= 1
+     }
+     return counter == Array(repeating: 0, count: 26)
+     */
+}
+
 //: [Next](@next)
