@@ -10,7 +10,7 @@ func reverseString(_ s: inout [Character]) {
         (s[i], s[c - 1 - i]) = (s[c - 1 - i], s[i])
     }
     /* 直接调用API更好😂
-     s = s.reverse()
+     s.reverse()
      */
 }
 //:
@@ -33,15 +33,39 @@ func reverse(_ x: Int) -> Int {
      var num = x
      var result = 0
      while num != 0 {
-     let temp = num % 10
-     result = temp + result * 10
-     num /= 10
+         let temp = num % 10
+         result = temp + result * 10
+         num /= 10
      }
      if result >= Int32.min, result <= Int32.max {
-     return result
+         return result
      }
      return 0
      */
+    
 }
-
+//:
+//: ---
+//: ### [字符串中的第一个唯一字符](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/34/)
+func firstUniqChar(_ s: String) -> Int {
+    let frequency = Dictionary(s.map{ ($0, 1) }, uniquingKeysWith: +)
+    for (index, value) in s.enumerated() {
+        if let count = frequency[value], count == 1 {
+            return index
+        }
+    }
+    return -1
+    /* 大佬的解法
+     var arr = [Int](repeating: 0, count: 26)
+     for c in s.unicodeScalars {
+         arr[Int(c.value) - 97] += 1
+     }
+     for (index, value) in s.unicodeScalars.enumerated() {
+         if arr[Int(value.value) - 97] == 1 {
+             return index
+         }
+     }
+     return -1
+     */
+}
 //: [Next](@next)
