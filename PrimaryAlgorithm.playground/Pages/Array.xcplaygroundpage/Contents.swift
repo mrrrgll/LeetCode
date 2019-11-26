@@ -205,5 +205,13 @@ func isValidSudoku(_ board: [[Character]]) -> Bool {
 //:
 //: ---
 //: ### [旋转图像](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/31/)
+func rotate(_ matrix: inout [[Int]]) {
+    for i in 0..<matrix.count {
+        for j in (i+1)..<matrix[i].count {
+            (matrix[i][j], matrix[j][i]) = (matrix[j][i], matrix[i][j])
+        }
+        matrix[i].reverse()
+    }
+}
 
 //: [Next](@next)
