@@ -193,8 +193,25 @@ func myAtoi(_ str: String) -> Int {
         return sign == "-" ? Int(Int32.min) : Int(Int32.max)
     }
 }
+//:
+//: ---
+//: ### [实现strStr()](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/38/)
+func strStr(_ haystack: String, _ needle: String) -> Int {
+    guard haystack.count >= needle.count else { return -1 }
+    let n = needle.count
+    for i in 0..<haystack.count - n + 1 {
+        let start = haystack.index(haystack.startIndex, offsetBy: i)
+        let end = haystack.index(start, offsetBy: n)
+        let s = haystack[start..<end]
+        if s == needle {
+            return i
+        }
+    }
+    return -1
+    // 拓展: Sunday KMP BM Horspool
+}
+
 let startTime = CFAbsoluteTimeGetCurrent()
-// 测试代码写这里:
 
 let endTime = CFAbsoluteTimeGetCurrent()
 print("代码执行时长：\((endTime - startTime)*1000) 毫秒")
