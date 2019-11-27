@@ -170,7 +170,7 @@ func myAtoi(_ str: String) -> Int {
         }
         if c == "-" || c == "+" {
             if temp.count > 0 || sign.count > 0 {
-                break // 出现了多余的正负号
+                break // 出现了多余的正负号 or 数字后出现正负号
             }
             sign = String(c)
             continue // 确定了正负号
