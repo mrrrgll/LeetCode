@@ -208,12 +208,96 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
         }
     }
     return -1
-    // 拓展: Sunday KMP BM Horspool
+    /* 拓展: Sunday KMP BM Horspool
+     [Sunday算法实现](https://leetcode-cn.com/problems/implement-strstr/solution/python3-sundayjie-fa-9996-by-tes/)
+     /// 计算偏移表
+     func calShiftMat(_ st: String) -> [String: Int] {
+         var dic = [String: Int]()
+         for (index, value) in st.reversed().enumerated() {
+             let str = String(value)
+             if dic[str] == nil {
+                 dic[str] = index + 1
+             }
+         }
+         dic["ot"] = st.count + 1
+         return dic
+     }
+     // 其它情况判断
+     if needle == haystack {
+         return 0
+     }
+     if needle.count > haystack.count {
+         return -1
+     }
+     if needle.count == 0 {
+         return 0
+     }
+     
+     // 偏移表预处理
+     let dic = calShiftMat(needle)
+     var idx = 0
+     
+     while idx + needle.count <= haystack.count {
+         // 待处理字符串
+         let start = haystack.index(haystack.startIndex, offsetBy: idx)
+         let end = haystack.index(start, offsetBy: needle.count)
+         let subStr = haystack[start..<end]
+         // 判断是否匹配
+         if subStr == needle {
+             return idx
+         } else {
+             // 边界处理
+             if idx + needle.count >= haystack.count {
+                 return -1
+             }
+             // 不匹配的情况下, 根据下一个字符的偏移, 移动idx
+             let nextChar = String(haystack[end])
+             if let index = dic[nextChar] {
+                 idx += index
+             } else {
+                 idx += dic["ot"]!
+             }
+         }
+     }
+     
+     if idx + needle.count >= haystack.count {
+         return -1
+     }
+     return idx
+     */
+}
+//:
+//: ---
+//: ### [报数](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/39/)
+func countAndSay(_ n: Int) -> String {
+    if n < 1 {
+        return ""
+    }
+    if n == 1 {
+        return "1"
+    } else {
+        let preStr = countAndSay(n - 1)
+        var flag = preStr[preStr.startIndex]
+        var count = 0
+        var temp = ""
+        for c in preStr {
+            if c == flag {
+                count += 1
+            } else {
+                temp += "\(count)\(flag)"
+                flag = c
+                count = 1
+            }
+        }
+        temp += "\(count)\(flag)"
+        return temp
+    }
 }
 
 let startTime = CFAbsoluteTimeGetCurrent()
 
 let endTime = CFAbsoluteTimeGetCurrent()
 print("代码执行时长：\((endTime - startTime)*1000) 毫秒")
+
 
 //: [Next](@next)
