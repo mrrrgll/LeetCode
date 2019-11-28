@@ -266,10 +266,38 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
      return idx
      */
 }
+//:
+//: ---
+//: ### [报数](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/39/)
+func countAndSay(_ n: Int) -> String {
+    if n < 1 {
+        return ""
+    }
+    if n == 1 {
+        return "1"
+    } else {
+        let preStr = countAndSay(n - 1)
+        var flag = preStr[preStr.startIndex]
+        var count = 0
+        var temp = ""
+        for c in preStr {
+            if c == flag {
+                count += 1
+            } else {
+                temp += "\(count)\(flag)"
+                flag = c
+                count = 1
+            }
+        }
+        temp += "\(count)\(flag)"
+        return temp
+    }
+}
 
 let startTime = CFAbsoluteTimeGetCurrent()
 
 let endTime = CFAbsoluteTimeGetCurrent()
 print("代码执行时长：\((endTime - startTime)*1000) 毫秒")
+
 
 //: [Next](@next)
