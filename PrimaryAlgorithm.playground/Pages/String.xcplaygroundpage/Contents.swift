@@ -293,11 +293,21 @@ func countAndSay(_ n: Int) -> String {
         return temp
     }
 }
-
-let startTime = CFAbsoluteTimeGetCurrent()
-
-let endTime = CFAbsoluteTimeGetCurrent()
-print("代码执行时长：\((endTime - startTime)*1000) 毫秒")
-
-
+//:
+//: ---
+//: ### [最长公共前缀](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/40/)
+func longestCommonPrefix(_ strs: [String]) -> String {
+    guard let min = strs.min(),
+        let max = strs.max() else {
+            return ""
+    }
+    for (i, c) in min.enumerated() {
+        let index = max.index(max.startIndex, offsetBy: i)
+        if c != max[index] {
+            let res = String(max[max.startIndex..<index])
+            return res
+        }
+    }
+    return min
+}
 //: [Next](@next)
