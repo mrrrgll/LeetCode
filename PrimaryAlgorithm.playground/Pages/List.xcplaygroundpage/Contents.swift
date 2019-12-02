@@ -71,20 +71,57 @@ func reverseList(_ head: ListNode?) -> ListNode? {
      return cur
      */
 }
-
+//:
+//: ---
+//: ### [合并两个有序链表](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/44/)
+func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+    // 迭代解法
+    let dummy = ListNode(0)
+    var node = dummy
+    var l1 = l1
+    var l2 = l2
+    while l1 != nil, l2 != nil {
+        if l1!.val < l2!.val {
+            node.next = l1
+            l1 = l1!.next
+        } else {
+            node.next = l2
+            l2 = l2!.next
+        }
+        node = node.next!
+    }
+    node.next = l1 ?? l2
+    return dummy.next
+    /* 递归解法
+     if l1 == nil {
+         return l2
+     }
+     if l2 == nil {
+         return l1
+     }
+     if l1!.val < l2!.val {
+         l1!.next = mergeTwoLists(l1!.next, l2)
+         return l1
+     }
+     l2!.next = mergeTwoLists(l1, l2!.next)
+     return l2
+     */
+}
 let t1 = ListNode(1)
 let t2 = ListNode(2)
-let t3 = ListNode(3)
-let t4 = ListNode(4)
-let t5 = ListNode(5)
+let t3 = ListNode(4)
+let t4 = ListNode(1)
+let t5 = ListNode(3)
+let t6 = ListNode(4)
 
 t1.next = t2
 t2.next = t3
-t3.next = t4
+
 t4.next = t5
+t5.next = t6
 
 let startTime = CFAbsoluteTimeGetCurrent()
-reverseList(t1)
+mergeTwoLists(t1, t4)
 let endTime = CFAbsoluteTimeGetCurrent()
 print((endTime - startTime)*1000)
 
