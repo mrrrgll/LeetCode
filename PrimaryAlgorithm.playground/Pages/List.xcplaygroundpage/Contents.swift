@@ -58,10 +58,7 @@ func reverseList(_ head: ListNode?) -> ListNode? {
     var pre: ListNode?
     var cur = head
     while cur != nil {
-        let tmp = cur?.next
-        cur?.next = pre
-        pre = cur
-        cur = tmp
+        (cur!.next, pre, cur) = (pre, cur, cur?.next)
     }
     return pre
     /* 递归解法
