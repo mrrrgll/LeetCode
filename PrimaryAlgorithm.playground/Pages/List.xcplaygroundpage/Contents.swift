@@ -107,6 +107,39 @@ func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
      return l2
      */
 }
+//:
+//: ---
+//: ### [环形链表](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/46/)
+func hasCycle(_ head: ListNode?) -> Bool {
+    // ⚠️暂时不知道Swift如何创建出循环链表, 故使用val作为判断条件
+    // 哈希表
+    var set: Set<Int> = []
+    var node = head
+    while node != nil {
+        if set.contains(node!.val) {
+            return true
+        } else {
+            set.insert(node!.val)
+        }
+        node = node!.next
+    }
+    return false
+    /* 快慢指针
+     if head == nil || head!.next == nil {
+         return false
+     }
+     var fast = head!.next
+     var slow = head
+     while fast!.val != slow!.val {
+         if fast!.next == nil || fast!.next!.next == nil {
+             return false
+         }
+         fast = fast!.next!.next
+         slow = slow!.next
+     }
+     return true
+     */
+}
 let t1 = ListNode(1)
 let t2 = ListNode(2)
 let t3 = ListNode(4)
@@ -116,12 +149,13 @@ let t6 = ListNode(4)
 
 t1.next = t2
 t2.next = t3
+t3.next = t5
 
-t4.next = t5
-t5.next = t6
+//t4.next = t5
+//t5.next = t6
 
 let startTime = CFAbsoluteTimeGetCurrent()
-mergeTwoLists(t1, t4)
+hasCycle(t1)
 let endTime = CFAbsoluteTimeGetCurrent()
 print((endTime - startTime)*1000)
 
