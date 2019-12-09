@@ -140,23 +140,4 @@ func hasCycle(_ head: ListNode?) -> Bool {
      return true
      */
 }
-let t1 = ListNode(1)
-let t2 = ListNode(2)
-let t3 = ListNode(4)
-let t4 = ListNode(1)
-let t5 = ListNode(3)
-let t6 = ListNode(4)
-
-t1.next = t2
-t2.next = t3
-t3.next = t5
-
-//t4.next = t5
-//t5.next = t6
-
-let startTime = CFAbsoluteTimeGetCurrent()
-hasCycle(t1)
-let endTime = CFAbsoluteTimeGetCurrent()
-print((endTime - startTime)*1000)
-
 //: [Next](@next)

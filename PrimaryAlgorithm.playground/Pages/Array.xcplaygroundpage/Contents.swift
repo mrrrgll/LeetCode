@@ -1,5 +1,5 @@
-import Foundation
 //: [Previous](@previous)
+import Foundation
 //:
 //: ---
 //: ### [从排序数组中删除重复项](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/21/)
