@@ -1,5 +1,5 @@
-import Foundation
 //: [Previous](@previous)
+import Foundation
 //:
 //: ---
 //: ### [反转字符串](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/32/)
