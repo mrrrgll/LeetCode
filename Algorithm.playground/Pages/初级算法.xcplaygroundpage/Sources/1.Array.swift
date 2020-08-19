@@ -1,9 +1,7 @@
-//: [Previous](@previous)
 import Foundation
-//:
-//: ---
-//: ### [从排序数组中删除重复项](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/21/)
-func removeDuplicates(_ nums: inout [Int]) -> Int {
+
+// MARK: - 从排序数组中删除重复项
+public func removeDuplicates(_ nums: inout [Int]) -> Int {
     if nums.isEmpty { return 0 }
     var i = 0
     for item in nums where item != nums[i] {
@@ -12,10 +10,8 @@ func removeDuplicates(_ nums: inout [Int]) -> Int {
     }
     return i + 1
 }
-//:
-//: ---
-//: ### [买卖股票的最佳时机 II](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/22/)
-func maxProfit(_ prices: [Int]) -> Int {
+// MARK: - 买卖股票的最佳时机 II
+public func maxProfit(_ prices: [Int]) -> Int {
     if prices.count < 2 { return 0 }
     var sum = 0
     var i = 0
@@ -29,10 +25,9 @@ func maxProfit(_ prices: [Int]) -> Int {
     }
     return sum
 }
-//:
-//: ---
-//: ### [旋转数组](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/23/)
-func rotate(_ nums: inout [Int], _ k: Int) {
+
+// MARK: - 旋转数组
+public func rotate(_ nums: inout [Int], _ k: Int) {
     if k < 1 || nums.count < 2 || nums.count == k {
         return
     }
@@ -49,26 +44,20 @@ func rotate(_ nums: inout [Int], _ k: Int) {
      nums = Array(tail + head)
      */
 }
-//:
-//: ---
-//: ### [存在重复](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/24/)
-func containsDuplicate(_ nums: [Int]) -> Bool {
+// MARK: - 存在重复元素
+public func containsDuplicate(_ nums: [Int]) -> Bool {
     return nums.count != Set(nums).count
 }
-//:
-//: ---
-//: ### [只出现一次的数字](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/25/)
-func singleNumber(_ nums: [Int]) -> Int {
+// MARK: - 只出现一次的数字
+public func singleNumber(_ nums: [Int]) -> Int {
     var res = 0
     for item in nums {
         res = res ^ item
     }
     return res
 }
-//:
-//: ---
-//: ### [两个数组的交集 II](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/26/)
-func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
+// MARK: - 两个数组的交集 II
+public func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
     var frequency = Dictionary(nums1.map{ ($0, 1) }, uniquingKeysWith: +)
     var results = [Int]()
     for num in nums2 {
@@ -98,10 +87,8 @@ func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
      return res
      */
 }
-//:
-//: ---
-//: ### [加一](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/27/)
-func plusOne(_ digits: [Int]) -> [Int] {
+// MARK: - 加一
+public func plusOne(_ digits: [Int]) -> [Int] {
     var res = digits
     for i in 0..<res.count {
         let j = res.count - i - 1
@@ -129,10 +116,8 @@ func plusOne(_ digits: [Int]) -> [Int] {
      return res.reversed()
      */
 }
-//:
-//: ---
-//: ### [移动零](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/28/)
-func moveZeroes(_ nums: inout [Int]) {
+// MARK: - 移动零
+public func moveZeroes(_ nums: inout [Int]) {
     var i = 0
     var j = 1
     while j < nums.count {
@@ -164,10 +149,8 @@ func moveZeroes(_ nums: inout [Int]) {
      }
      */
 }
-//:
-//: ---
-//: ### [两数之和](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/29/)
-func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+// MARK: - 两数之和
+public func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
     var map = [Int: Int]()
     for i in 0..<nums.count {
         let complete = target - nums[i]
@@ -178,10 +161,8 @@ func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
     }
     return []
 }
-//:
-//: ---
-//: ### [有效的数独](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/30/)
-func isValidSudoku(_ board: [[Character]]) -> Bool {
+// MARK: - 有效的数独
+public func isValidSudoku(_ board: [[Character]]) -> Bool {
     for i in 0..<9 {
         var line = Set<Character>()
         var column = Set<Character>()
@@ -202,10 +183,8 @@ func isValidSudoku(_ board: [[Character]]) -> Bool {
     }
     return true
 }
-//:
-//: ---
-//: ### [旋转图像](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/31/)
-func rotate(_ matrix: inout [[Int]]) {
+// MARK: - 旋转图像
+public func rotate(_ matrix: inout [[Int]]) {
     for i in 0..<matrix.count {
         for j in (i+1)..<matrix[i].count {
             (matrix[i][j], matrix[j][i]) = (matrix[j][i], matrix[i][j])
@@ -213,5 +192,3 @@ func rotate(_ matrix: inout [[Int]]) {
         matrix[i].reverse()
     }
 }
-
-//: [Next](@next)

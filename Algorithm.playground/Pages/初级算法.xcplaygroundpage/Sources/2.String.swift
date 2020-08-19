@@ -1,22 +1,17 @@
-//: [Previous](@previous)
 import Foundation
-//:
-//: ---
-//: ### [反转字符串](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/32/)
-func reverseString(_ s: inout [Character]) {
+
+// MARK: - 反转字符串
+public func reverseString(_ s: inout [Character]) {
     let c = s.count
-    let mid = c / 2
-    for i in 0..<mid {
+    for i in 0..<c / 2 {
         (s[i], s[c - 1 - i]) = (s[c - 1 - i], s[i])
     }
-    /* 直接调用API更好😂
+    /* 也直接调用API
      s.reverse()
      */
 }
-//:
-//: ---
-//: ### [整数反转](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/33/)
-func reverse(_ x: Int) -> Int {
+// MARK: - 整数反转
+public func reverse(_ x: Int) -> Int {
     var y = x < 0 ? -x : x
     var arr = [String]()
     while y != 0 {
@@ -44,10 +39,8 @@ func reverse(_ x: Int) -> Int {
      */
     
 }
-//:
-//: ---
-//: ### [字符串中的第一个唯一字符](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/34/)
-func firstUniqChar(_ s: String) -> Int {
+// MARK: - 字符串中的第一个唯一字符
+public func firstUniqChar(_ s: String) -> Int {
     let frequency = Dictionary(s.map{ ($0, 1) }, uniquingKeysWith: +)
     for (index, value) in s.enumerated() {
         if let count = frequency[value], count == 1 {
@@ -68,10 +61,8 @@ func firstUniqChar(_ s: String) -> Int {
      return -1
      */
 }
-//:
-//: ---
-//: ### [有效的字母异位词](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/35/)
-func isAnagram(_ s: String, _ t: String) -> Bool {
+// MARK: - 有效的字母异位词
+public func isAnagram(_ s: String, _ t: String) -> Bool {
     let dictS = Dictionary(s.unicodeScalars.map{ ($0.value, 1) }, uniquingKeysWith: +)
     let dictT = Dictionary(t.unicodeScalars.map{ ($0.value, 1) }, uniquingKeysWith: +)
     return dictS == dictT
@@ -87,10 +78,8 @@ func isAnagram(_ s: String, _ t: String) -> Bool {
      return counter == Array(repeating: 0, count: 26)
      */
 }
-//:
-//: ---
-//: ### [验证回文字符串](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/36/)
-func isPalindrome(_ s: String) -> Bool {
+// MARK: - 验证回文字符串
+public func isPalindrome(_ s: String) -> Bool {
     var arr = [UInt32]()
     for i in s.unicodeScalars {
         if i.value > 47, i.value < 58 {// 0...9
@@ -117,7 +106,7 @@ func isPalindrome(_ s: String) -> Bool {
     return true
     /* 不使用额外空间的解法,使用String.Index
      guard s.count > 0 else { return true }
-     func isNumOrLetter(_ c: Character) -> Bool {
+     public func isNumOrLetter(_ c: Character) -> Bool {
          if c >= "A", c <= "Z" {
              return true
          }
@@ -151,10 +140,8 @@ func isPalindrome(_ s: String) -> Bool {
      return true
      */
 }
-//:
-//: ---
-//: ### [字符串转换整数 (atoi)](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/37/)
-func myAtoi(_ str: String) -> Int {
+// MARK: - 字符串转换整数 (atoi)
+public func myAtoi(_ str: String) -> Int {
     guard str.count > 0 else { return 0 }
     var temp = ""
     var sign = ""
@@ -193,10 +180,8 @@ func myAtoi(_ str: String) -> Int {
         return sign == "-" ? Int(Int32.min) : Int(Int32.max)
     }
 }
-//:
-//: ---
-//: ### [实现strStr()](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/38/)
-func strStr(_ haystack: String, _ needle: String) -> Int {
+// MARK: - 实现strStr()
+public func strStr(_ haystack: String, _ needle: String) -> Int {
     guard haystack.count >= needle.count else { return -1 }
     let n = needle.count
     for i in 0..<haystack.count - n + 1 {
@@ -209,9 +194,9 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
     }
     return -1
     /* 拓展: Sunday KMP BM Horspool
-     [Sunday算法实现](https://leetcode-cn.com/problems/implement-strstr/solution/python3-sundayjie-fa-9996-by-tes/)
+     [Sunday算法实现
      /// 计算偏移表
-     func calShiftMat(_ st: String) -> [String: Int] {
+     public func calShiftMat(_ st: String) -> [String: Int] {
          var dic = [String: Int]()
          for (index, value) in st.reversed().enumerated() {
              let str = String(value)
@@ -266,10 +251,8 @@ func strStr(_ haystack: String, _ needle: String) -> Int {
      return idx
      */
 }
-//:
-//: ---
-//: ### [报数](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/39/)
-func countAndSay(_ n: Int) -> String {
+// MARK: - 报数
+public func countAndSay(_ n: Int) -> String {
     if n < 1 {
         return ""
     }
@@ -293,10 +276,8 @@ func countAndSay(_ n: Int) -> String {
         return temp
     }
 }
-//:
-//: ---
-//: ### [最长公共前缀](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/40/)
-func longestCommonPrefix(_ strs: [String]) -> String {
+// MARK: - 最长公共前缀
+public func longestCommonPrefix(_ strs: [String]) -> String {
     guard let min = strs.min(),
         let max = strs.max() else {
             return ""
@@ -310,4 +291,3 @@ func longestCommonPrefix(_ strs: [String]) -> String {
     }
     return min
 }
-//: [Next](@next)

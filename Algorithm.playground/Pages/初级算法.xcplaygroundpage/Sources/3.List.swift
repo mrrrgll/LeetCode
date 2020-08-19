@@ -1,6 +1,6 @@
-//: [Previous](@previous)
 import Foundation
-class ListNode {
+
+public class ListNode {
     var val: Int
     var next: ListNode? = nil
     init(_ val: Int) {
@@ -8,7 +8,7 @@ class ListNode {
     }
 }
 extension ListNode: CustomDebugStringConvertible {
-    var debugDescription: String {
+    public var debugDescription: String {
         var text = "["
         text += "\(val)"
         var tempNode = next
@@ -19,11 +19,9 @@ extension ListNode: CustomDebugStringConvertible {
         return text + "]"
     }
 }
-//:
-//: ---
-//: ### [删除链表中的节点](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/41/)
+// MARK: - 删除链表中的节点
 extension ListNode {
-    func deleteNode(_ node: ListNode) {
+    public func deleteNode(_ node: ListNode) {
         if let next = node.next {
             // 把当前节点的值替换为下一个节点的值
             node.val = next.val
@@ -32,10 +30,8 @@ extension ListNode {
         }
     }
 }
-//:
-//: ---
-//: ### [删除链表的倒数第N个节点](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/42/)
-func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
+// MARK: - 删除链表的倒数第N个节点
+public func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
     let dummy = ListNode(0)
     dummy.next = head
     var prev: ListNode? = dummy
@@ -50,10 +46,8 @@ func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
     prev!.next = prev!.next!.next
     return dummy.next
 }
-//:
-//: ---
-//: ### [反转链表](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/43/)
-func reverseList(_ head: ListNode?) -> ListNode? {
+// MARK: - 反转链表
+public func reverseList(_ head: ListNode?) -> ListNode? {
     // 迭代解法
     var pre: ListNode?
     var cur = head
@@ -71,10 +65,8 @@ func reverseList(_ head: ListNode?) -> ListNode? {
      return cur
      */
 }
-//:
-//: ---
-//: ### [合并两个有序链表](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/44/)
-func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+// MARK: - 合并两个有序链表
+public func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
     // 迭代解法
     let dummy = ListNode(0)
     var node = dummy
@@ -107,10 +99,8 @@ func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
      return l2
      */
 }
-//:
-//: ---
-//: ### [回文链表](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/45/)
-func isPalindrome(_ head: ListNode?) -> Bool {
+// MARK: - 回文链表
+public func isPalindrome(_ head: ListNode?) -> Bool {
         var fast = head
         var slow = head
         var dummy: ListNode?
@@ -137,8 +127,8 @@ func isPalindrome(_ head: ListNode?) -> Bool {
         }
         return true
 }
-//: ### [环形链表](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/6/linked-list/46/)
-func hasCycle(_ head: ListNode?) -> Bool {
+//: ### [环形链表
+public func hasCycle(_ head: ListNode?) -> Bool {
     // ⚠️暂时不知道Swift如何创建出循环链表, 故使用val作为判断条件
     // 哈希表
     var set: Set<Int> = []
@@ -168,4 +158,3 @@ func hasCycle(_ head: ListNode?) -> Bool {
      return true
      */
 }
-//: [Next](@next)
